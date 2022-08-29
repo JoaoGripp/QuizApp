@@ -10,8 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -24,13 +23,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         /// 3. Create a view hierarchy programmatically
-        let viewController = QuestionViewController(
-            question: "A question?",
-            options: ["Option 1", "Option 2"]) {
-                print($0)
-            }
+        let viewController = ResultsViewController(summary: "You got 1/2 correct", answers: [
+            PresentableAnswer(question: "Question??", answer: "Yeah!", wrongAnswer: nil),
+            PresentableAnswer(question: "Another Question??", answer: "Hell yeah!", wrongAnswer: "Hell no!")
+        ])
         _ = viewController.view
-        viewController.tableView.allowsMultipleSelection = false
+//        viewController.tableView.allowsMultipleSelection = false
         let navigation = UINavigationController(rootViewController: viewController)
         
         /// 4. Set the root view controller of the window with your view controller
